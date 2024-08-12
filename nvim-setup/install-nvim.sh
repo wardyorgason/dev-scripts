@@ -68,15 +68,29 @@ else
     if [ "$architecture" = "aarch64" ]; then
         echo "Detected ARM64 Linux. Installing nvim from source..."
 
+        MISSING_PACKAGES=""
+        
         # Ensure CMake is installed
         if ! command -v cmake &> /dev/null; then
             echo "CMake not found. Installing CMake..."
-            sudo apt-get update
-            sudo apt-get install -y cmake
+            MISSING_PACKAGES='cmake'
         fi
 
         # this is required for the build
-        sudo apt-get install gettext -y
+        if ! command -v gettext &> /dev/null; then
+            echo "Gettext not found. Installing Gettext..."
+            MISSING_PACKAGES="$MISSING_PACKAGES gettext"
+        fi
+
+        # Check if there are any missing packages
+        if [ -n "$MISSING_PACKAGES" ]; then
+            echo "Installing missing packages: $MISSING_PACKAGES"
+            sudo apt-get update
+            sudo apt-get install -y $MISSING_PACKAGES
+        else
+            echo "All required packages are already installed."
+        fi
+        
 
         # Clone the Neovim repository and build from source
         git clone https://github.com/neovim/neovim.git
