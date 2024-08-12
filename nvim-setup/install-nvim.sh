@@ -1,5 +1,13 @@
 #!/bin/bash
 
+set -uex
+
+# Acquire sudo privileges
+sudo -v
+
+# Keep the sudo session alive until the script finishes
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 # Function to disable mouse support in nvim
 disable_mouse_support() {
     nvim_config_dir="$HOME/.config/nvim"
