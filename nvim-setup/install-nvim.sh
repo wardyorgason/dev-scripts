@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -uex
+set -ex
 
 # Acquire sudo privileges
 sudo -v
