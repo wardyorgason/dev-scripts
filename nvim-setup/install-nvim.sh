@@ -67,10 +67,13 @@ else
             sudo apt-get install -y cmake
         fi
 
+        # this is required for the build
+        sudo apt-get install getttext -y
+
         # Clone the Neovim repository and build from source
         git clone https://github.com/neovim/neovim.git
         cd neovim
-	git checkout stable
+        git checkout stable
         make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/opt
         sudo make install
 
