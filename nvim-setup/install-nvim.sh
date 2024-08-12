@@ -76,7 +76,7 @@ else
         fi
 
         # this is required for the build
-        sudo apt-get install getttext -y
+        sudo apt-get install gettext -y
 
         # Clone the Neovim repository and build from source
         git clone https://github.com/neovim/neovim.git
