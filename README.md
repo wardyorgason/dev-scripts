@@ -8,5 +8,5 @@ So, I decided to write a script to handle installation on MacOS (Arm), Ubuntu (A
 To install it, just run the `nvim-setup/install-nvim.sh` script:
 
 ```bash
-
+curl -sS https://raw.githubusercontent.com/wardyorgason/dev-scripts/main/nvim-setup/install-nvim.sh | bash
 ```
