@@ -101,7 +101,9 @@ else
 
         # Clean up
         cd ..
-        sudo rm -rf neovim
+        
+        echo "Now go into the build directory of neovim, install the executable where you want it"
+        echo "The rest keeps having issues so you get to do it manually"
 
     else
         echo "Detected x64 Linux. Installing nvim for x64..."
